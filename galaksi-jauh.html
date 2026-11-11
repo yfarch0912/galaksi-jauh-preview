@@ -260,49 +260,171 @@ body.opened #btnMusic{display:flex}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .rv{opacity:1;transform:none}
 }
+
+/* ================= BESPOKE GALAKSI JAUH: MISI ANTARIKSA — DARI DEK OBSERVASI ================= */
+/* --- SAMPUL: dinding stasiun + viewport bundar --- */
+#cover{display:flex;flex-direction:column;align-items:center;height:auto;min-height:100dvh;padding:30px 22px 34px;background:radial-gradient(120% 60% at 50% 0%,#1d1445 0%,#0d0828 46%,#060318 100%)}
+#cover::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 106px,rgba(183,156,255,.07) 106px 107px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(183,156,255,.05) 148px 149px);pointer-events:none}
+.station-wall{position:absolute;inset:0;pointer-events:none}
+.st-light{position:absolute;width:9px;height:9px;border-radius:50%;background:#8ef0c8;box-shadow:0 0 10px 3px rgba(120,255,195,.55);animation:stBlink 2.8s ease-in-out infinite alternate}
+.st-light.amber{background:#ffd97a;box-shadow:0 0 10px 3px rgba(255,205,90,.5);animation-delay:-1.3s}
+.sl1{left:16px;top:16px}.sl2{right:16px;top:16px}.sl3{left:16px;bottom:16px}.sl4{right:16px;bottom:16px}
+@keyframes stBlink{from{opacity:.35}to{opacity:1}}
+.station-label{position:relative;text-align:center;font-size:9.5px;letter-spacing:.34em;color:#9d8fd0;font-weight:700;margin-bottom:14px;animation:kickGlow 4s ease-in-out infinite alternate}
+.viewport-wrap{position:relative;width:min(86vw,356px);aspect-ratio:1;margin-top:2px;animation:vpBreath 9s cubic-bezier(.37,0,.63,1) infinite alternate}
+@keyframes vpBreath{from{transform:scale(1)}to{transform:scale(1.022)}}
+.viewport-ring{position:absolute;inset:-13px;border-radius:50%;background:conic-gradient(from 210deg,#3a2f66,#171038 18%,#57489a 32%,#120b36 50%,#3a2f66 66%,#6a5bb0 82%,#171038);box-shadow:0 22px 50px rgba(0,0,0,.75),inset 0 2px 3px rgba(255,255,255,.35),inset 0 -3px 6px rgba(0,0,0,.7);animation:ringSpin 110s linear infinite}
+@keyframes ringSpin{to{transform:rotate(360deg)}}
+.viewport-ring::after{content:"";position:absolute;inset:9px;border-radius:50%;border:2px dashed rgba(238,217,164,.4)}
+.bolt{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#efe6ff,#7a68b8 55%,#241a4e);box-shadow:inset 0 -1px 2px rgba(0,0,0,.8),0 1px 2px rgba(0,0,0,.6)}
+.bolt::after{content:"";position:absolute;left:1.5px;right:1.5px;top:50%;height:1.6px;margin-top:-.8px;background:rgba(10,6,30,.75);transform:rotate(38deg)}
+.b1{left:50%;top:2px;margin-left:-5.5px}.b2{right:12%;top:12%}.b3{right:2px;top:50%;margin-top:-5.5px}.b4{right:12%;bottom:12%}.b5{left:50%;bottom:2px;margin-left:-5.5px}.b6{left:12%;bottom:12%}.b7{left:2px;top:50%;margin-top:-5.5px}.b8{left:12%;top:12%}
+.viewport-glass{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:3px solid rgba(238,217,164,.55);box-shadow:inset 0 0 60px rgba(4,2,18,.55);background:#0b0721}
+.viewport-glass .scene{animation:none}
+.viewport-glare{position:absolute;inset:0;border-radius:50%;background:linear-gradient(125deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,.05) 26%,transparent 45%);pointer-events:none;z-index:6}
+.shutter{position:absolute;left:0;width:100%;height:51%;z-index:7;background:repeating-linear-gradient(0deg,#241a52 0 26px,#1a113f 26px 28px);box-shadow:inset 0 0 0 2px rgba(238,217,164,.35);pointer-events:none}
+.sh-top{top:0;border-bottom:3px solid var(--gold);animation:shTop 1.5s cubic-bezier(.7,0,.3,1) .8s both}
+.sh-bot{bottom:0;border-top:3px solid var(--gold);animation:shBot 1.5s cubic-bezier(.7,0,.3,1) .8s both}
+@keyframes shTop{from{transform:translateY(0)}to{transform:translateY(-104%)}}
+@keyframes shBot{from{transform:translateY(0)}to{transform:translateY(104%)}}
+/* lapisan bintang paralaks 3 kecepatan + twinkle multi-ritme */
+.star.lfar{animation:twinkle 4.7s ease-in-out infinite alternate,starDriftF 46s ease-in-out infinite alternate}
+.star.lmid{animation:twinkle 3.4s ease-in-out infinite alternate,starDriftM 30s ease-in-out infinite alternate}
+.star.lnear{animation:twinkle 2.2s ease-in-out infinite alternate,starDriftN 19s ease-in-out infinite alternate}
+@keyframes starDriftF{from{transform:translate3d(0,0,0)}to{transform:translate3d(4px,-5px,0)}}
+@keyframes starDriftM{from{transform:translate3d(0,0,0)}to{transform:translate3d(-7px,6px,0)}}
+@keyframes starDriftN{from{transform:translate3d(0,0,0)}to{transform:translate3d(10px,-9px,0)}}
+.nebula-sprite{opacity:.85;animation:nebDrift 26s cubic-bezier(.37,0,.63,1) infinite alternate}
+@keyframes nebDrift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-14px,10px,0) scale(1.07)}}
+.asteroid-sprite{animation:astFloat 13s cubic-bezier(.37,0,.63,1) infinite alternate}
+@keyframes astFloat{from{transform:translate3d(0,0,0) rotate(-5deg)}to{transform:translate3d(-12px,-14px,0) rotate(7deg)}}
+.ring-shimmer{animation:ringShine 5.5s ease-in-out infinite alternate}
+@keyframes ringShine{from{filter:brightness(1) drop-shadow(0 4px 8px rgba(2,1,10,.6))}to{filter:brightness(1.3) drop-shadow(0 0 14px rgba(238,217,164,.55))}}
+.cover-ui{position:relative;inset:auto;z-index:8;padding:20px 4px 0}
+.cover-kicker{margin-top:0}
+.cover-crest{width:64px;margin:-34px auto 0;position:relative;z-index:9;filter:drop-shadow(0 6px 14px rgba(0,0,0,.7));animation:iconBob 6s cubic-bezier(.37,0,.63,1) infinite alternate}
+/* --- PANEL MISI: sekrup sudut + strip kepala --- */
+.card{background:radial-gradient(circle 5px at 13px 13px,#cbbcf5 2.2px,#4a3a86 3.4px,transparent 4.2px),radial-gradient(circle 5px at calc(100% - 13px) 13px,#cbbcf5 2.2px,#4a3a86 3.4px,transparent 4.2px),radial-gradient(circle 5px at 13px calc(100% - 13px),#cbbcf5 2.2px,#4a3a86 3.4px,transparent 4.2px),radial-gradient(circle 5px at calc(100% - 13px) calc(100% - 13px),#cbbcf5 2.2px,#4a3a86 3.4px,transparent 4.2px),var(--panel)}
+.sec-head::before{content:"";position:absolute;left:50%;top:-16px;width:190px;height:64px;transform:translateX(-50%);border:1.5px solid rgba(183,156,255,.30);border-radius:50%;pointer-events:none;animation:orbitPulse 7s ease-in-out infinite alternate}
+@keyframes orbitPulse{from{opacity:.45;transform:translateX(-50%) scale(1)}to{opacity:.9;transform:translateX(-50%) scale(1.05)}}
+/* --- COUNTDOWN: DIAL ORBIT --- */
+.orbit-dial{position:relative;width:216px;height:216px;margin:4px auto 20px}
+.dial-face{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 42%,#2c1e63,#100a33 68%);border:2px solid rgba(238,217,164,.65);box-shadow:0 16px 36px rgba(2,1,10,.65),inset 0 0 34px rgba(183,156,255,.22)}
+.dial-face::before{content:"";position:absolute;inset:12px;border-radius:50%;border:1px dashed rgba(183,156,255,.45)}
+.dial-face::after{content:"";position:absolute;inset:34px;border-radius:50%;border:1px solid rgba(238,217,164,.3)}
+.dial-orbit{position:absolute;inset:6px;animation:orbitSpin 24s linear infinite}
+.dial-orbit.o2{inset:30px;animation:orbitSpinR 40s linear infinite}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@keyframes orbitSpinR{to{transform:rotate(-360deg)}}
+.dial-planet{position:absolute;top:-7px;left:50%;width:15px;height:15px;margin-left:-7.5px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3d0,#c9a45c 60%,#7a5a1e);box-shadow:0 0 12px rgba(238,217,164,.8)}
+.dial-planet.p2{width:10px;height:10px;top:-5px;margin-left:-5px;background:radial-gradient(circle at 35% 30%,#e6ddff,#7fb2ff 60%,#33507e);box-shadow:0 0 9px rgba(127,178,255,.8)}
+.dial-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.dial-core b{font-family:'Playfair Display',serif;font-size:31px;color:#fff;letter-spacing:.04em}
+.dial-core span{font-size:9px;letter-spacing:.3em;color:var(--gold-l);font-weight:700;margin-top:2px;animation:kickGlow 3.6s ease-in-out infinite alternate}
+.dial-tick{position:absolute;left:50%;top:3px;width:2px;height:9px;margin-left:-1px;background:var(--gold-l);transform-origin:1px 105px}
+.cd-box{position:relative}
+.cd-box::before{content:"";position:absolute;top:-13px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--neb);box-shadow:0 0 8px rgba(183,156,255,.9);animation:stBlink 3.2s ease-in-out infinite alternate}
+/* --- LOVE STORY: RUTE ORBIT --- */
+.tl:before{display:none}
+.orbit-route{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:.75}
+.tl-dot{width:22px;height:22px;left:-2px;top:6px;border-width:2px}
+.tl-item:nth-child(2) .tl-dot{background:radial-gradient(circle at 35% 30%,#ffe9f2,#e58bb1 65%,#8a3a63)}
+.tl-item:nth-child(3) .tl-dot{background:radial-gradient(circle at 35% 30%,#e6f2ff,#7fb2ff 65%,#33507e)}
+.tl-item:nth-child(4) .tl-dot{background:radial-gradient(circle at 35% 30%,#eaffe9,#8fd98a 65%,#2e6b34)}
+.tl-item:nth-child(5) .tl-dot{background:radial-gradient(circle at 35% 30%,#fff3c9,var(--gold) 70%);box-shadow:0 0 0 5px rgba(238,217,164,.22),0 0 16px rgba(238,217,164,.85)}
+.tl-coord{font-size:9.5px;letter-spacing:.26em;color:var(--neb);font-weight:700;margin-bottom:3px;animation:kickGlow 4.2s ease-in-out infinite alternate}
+/* --- GALERI: TRANSMISI FOTO --- */
+.gal-slide .portal,.gal-slide .plain{position:relative}
+.gal-slide .ph::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 2px,transparent 2px 5px);pointer-events:none;z-index:2}
+.tx-tag{position:absolute;top:14px;bottom:auto;right:14px;z-index:3;background:rgba(9,5,30,.85);border:1px solid rgba(127,178,255,.6);color:#bcd7ff;font-size:9px;font-weight:700;letter-spacing:.16em;padding:3px 8px;border-radius:4px;animation:stBlink 3.8s ease-in-out infinite alternate}
+
+/* stagger sampul dipercepat mengikuti tirai viewport (membuka tuntas ±2,3 dtk) */
+.cover-kicker{animation:kickGlow 3.4s ease-in-out infinite alternate,fadeUp 1s 2.35s ease both}
+.cover-names{animation:fadeUp 1.1s 2.65s ease both}
+.cover-date{animation:fadeUp 1s 2.95s ease both}
+.cover-guest{animation:fadeUp 1s 3.25s ease both}
+.gname{animation:fadeUp 1s 3.4s ease both}
+#btnOpen{animation:fadeUp 1s 3.55s ease both}
+.demo-note{background:rgba(9,5,30,.78);border:1px solid rgba(183,156,255,.22);border-radius:10px;padding:7px 12px}
+.card .demo-note,.acc-card .demo-note{background:transparent;border:none;padding:0}
 </style>
 </head>
 <body>
 <div class="phone">
 
-  <!-- ================= SAMPUL: LIVING SCENE ================= -->
-  <header id="cover" aria-label="Sampul undangan Galaksi Jauh">
-    <div class="scene" id="scene">
-      <img class="lyr lyr-coverbg" src="assets/undangya/galaksi-jauh/cover-bg.webp" alt="Lukisan luar angkasa original: dek observasi stasiun antariksa dengan jendela lengkung raksasa, planet bercincin utuh, nebula ungu-biru, bumi kecil di kejauhan, komet dan bintang jatuh" width="800" height="1600">
-      <span class="star" style="left:8%;top:6%;width:3px;height:3px"></span>
-      <span class="star" style="left:22%;top:13%;width:2px;height:2px;animation-delay:-.7s"></span>
-      <span class="star" style="left:38%;top:4%;width:2.5px;height:2.5px;animation-delay:-1.3s"></span>
-      <span class="star" style="left:57%;top:9%;width:2px;height:2px;animation-delay:-.4s"></span>
-      <span class="star" style="left:71%;top:5%;width:3px;height:3px;animation-delay:-1.9s"></span>
-      <span class="star" style="left:86%;top:14%;width:2px;height:2px;animation-delay:-1.1s"></span>
-      <span class="star" style="left:93%;top:30%;width:2.5px;height:2.5px;animation-delay:-.2s"></span>
-      <span class="star" style="left:4%;top:26%;width:2px;height:2px;animation-delay:-2.2s"></span>
-      <span class="star" style="left:64%;top:20%;width:2px;height:2px;animation-delay:-1.6s"></span>
-      <span class="star" style="left:47%;top:16%;width:2px;height:2px;animation-delay:-.9s"></span>
-      <span class="shoot" style="left:78%;top:12%"></span>
-      <span class="shoot" style="left:88%;top:34%;animation-delay:-4.5s;width:84px"></span>
-      <span class="dust" style="left:12%;top:88%;width:9px;height:9px;--dd:12s"></span>
-      <span class="dust" style="left:30%;top:92%;width:6px;height:6px;--dd:15s;--ddl:-5s"></span>
-      <span class="dust" style="left:55%;top:90%;width:11px;height:11px;--dd:11s;--ddl:-3s"></span>
-      <span class="dust" style="left:74%;top:94%;width:6px;height:6px;--dd:14s;--ddl:-8s"></span>
-      <span class="dust" style="left:88%;top:89%;width:8px;height:8px;--dd:13s;--ddl:-6s"></span>
-      <img class="lyr hang" style="left:4%;top:0;width:15%;z-index:5" src="assets/undangya/galaksi-jauh/planet-ungu.webp" alt="">
-      <img class="lyr hang2" style="right:5%;top:0;width:12%;z-index:5" src="assets/undangya/galaksi-jauh/planet-biru.webp" alt="">
-      <img class="lyr floaty" style="left:6%;top:38%;width:17%;z-index:3" src="assets/undangya/galaksi-jauh/planet-cincin.webp" alt="">
-      <img class="lyr floaty2" style="right:4%;top:47%;width:19%;z-index:3" src="assets/undangya/galaksi-jauh/satelit.webp" alt="">
-      <img class="lyr floaty" style="right:12%;top:26%;width:13%;z-index:3;animation-delay:-3s" src="assets/undangya/galaksi-jauh/bulan.webp" alt="">
-      <img class="lyr upright" style="left:1%;bottom:0;width:15%;z-index:5" src="assets/undangya/galaksi-jauh/roket.webp" alt="">
-      <img class="lyr lyr-crest" src="assets/undangya/galaksi-jauh/crest.webp" alt="Emblem orbit emas Galaksi Jauh">
-      <div class="cover-shade"></div>
+  <!-- ================= SAMPUL: DEK OBSERVASI — VIEWPORT BUNDAR ================= -->
+  <header id="cover" aria-label="Sampul undangan Galaksi Jauh — dek observasi stasiun antariksa">
+    <div class="station-wall" aria-hidden="true">
+      <span class="st-light sl1"></span><span class="st-light amber sl2"></span><span class="st-light amber sl3"></span><span class="st-light sl4"></span>
     </div>
+    <div class="station-label">STASIUN ORBITAL MELATI &middot; DEK OBSERVASI 07</div>
+    <div class="viewport-wrap">
+      <div class="viewport-ring" aria-hidden="true"><i class="bolt b1"></i><i class="bolt b2"></i><i class="bolt b3"></i><i class="bolt b4"></i><i class="bolt b5"></i><i class="bolt b6"></i><i class="bolt b7"></i><i class="bolt b8"></i></div>
+      <div class="viewport-glass">
+        <div class="scene" id="scene">
+          <img class="lyr lyr-coverbg" src="assets/undangya/galaksi-jauh/cover-bg.webp" alt="Lukisan luar angkasa original dilihat dari dek observasi: planet bercincin utuh, nebula ungu-biru, bumi kecil di kejauhan dan pasangan mempelai" width="800" height="1600">
+          <span class="star lfar" style="left:6%;top:10%;width:1.6px;height:1.6px;animation-delay:0.0s"></span>
+      <span class="star lfar" style="left:18%;top:22%;width:1.6px;height:1.6px;animation-delay:-0.53s"></span>
+      <span class="star lfar" style="left:30%;top:7%;width:1.6px;height:1.6px;animation-delay:-1.06s"></span>
+      <span class="star lfar" style="left:44%;top:14%;width:1.6px;height:1.6px;animation-delay:-1.59s"></span>
+      <span class="star lfar" style="left:58%;top:5%;width:1.6px;height:1.6px;animation-delay:-2.12s"></span>
+      <span class="star lfar" style="left:70%;top:18%;width:1.6px;height:1.6px;animation-delay:-2.65s"></span>
+      <span class="star lfar" style="left:82%;top:8%;width:1.6px;height:1.6px;animation-delay:-3.18s"></span>
+      <span class="star lfar" style="left:92%;top:24%;width:1.6px;height:1.6px;animation-delay:-3.71s"></span>
+      <span class="star lfar" style="left:12%;top:34%;width:1.6px;height:1.6px;animation-delay:-4.24s"></span>
+      <span class="star lfar" style="left:66%;top:30%;width:1.6px;height:1.6px;animation-delay:-4.77s"></span>
+      <span class="star lfar" style="left:38%;top:28%;width:1.6px;height:1.6px;animation-delay:-5.3s"></span>
+      <span class="star lfar" style="left:88%;top:40%;width:1.6px;height:1.6px;animation-delay:-5.83s"></span>
+      <span class="star lmid" style="left:10%;top:48%;width:2.3px;height:2.3px;animation-delay:0.0s"></span>
+      <span class="star lmid" style="left:24%;top:58%;width:2.3px;height:2.3px;animation-delay:-0.71s"></span>
+      <span class="star lmid" style="left:48%;top:44%;width:2.3px;height:2.3px;animation-delay:-1.42s"></span>
+      <span class="star lmid" style="left:60%;top:52%;width:2.3px;height:2.3px;animation-delay:-2.13s"></span>
+      <span class="star lmid" style="left:76%;top:46%;width:2.3px;height:2.3px;animation-delay:-2.84s"></span>
+      <span class="star lmid" style="left:90%;top:58%;width:2.3px;height:2.3px;animation-delay:-3.55s"></span>
+      <span class="star lmid" style="left:34%;top:64%;width:2.3px;height:2.3px;animation-delay:-4.26s"></span>
+      <span class="star lmid" style="left:54%;top:70%;width:2.3px;height:2.3px;animation-delay:-4.97s"></span>
+      <span class="star lmid" style="left:16%;top:72%;width:2.3px;height:2.3px;animation-delay:-5.68s"></span>
+      <span class="star lmid" style="left:84%;top:74%;width:2.3px;height:2.3px;animation-delay:-6.39s"></span>
+      <span class="star lnear" style="left:20%;top:84%;width:3.2px;height:3.2px;animation-delay:0.0s"></span>
+      <span class="star lnear" style="left:42%;top:80%;width:3.2px;height:3.2px;animation-delay:-0.97s"></span>
+      <span class="star lnear" style="left:64%;top:86%;width:3.2px;height:3.2px;animation-delay:-1.94s"></span>
+      <span class="star lnear" style="left:80%;top:82%;width:3.2px;height:3.2px;animation-delay:-2.91s"></span>
+      <span class="star lnear" style="left:50%;top:92%;width:3.2px;height:3.2px;animation-delay:-3.88s"></span>
+      <span class="star lnear" style="left:30%;top:94%;width:3.2px;height:3.2px;animation-delay:-4.85s"></span>
+          <span class="shoot" style="left:76%;top:14%"></span>
+          <span class="shoot" style="left:86%;top:36%;animation-delay:-4.5s;width:84px"></span>
+          <span class="shoot" style="left:64%;top:6%;animation-delay:-7s;width:64px"></span>
+          <span class="dust" style="left:12%;top:88%;width:9px;height:9px;--dd:12s"></span>
+          <span class="dust" style="left:30%;top:92%;width:6px;height:6px;--dd:15s;--ddl:-5s"></span>
+          <span class="dust" style="left:55%;top:90%;width:11px;height:11px;--dd:11s;--ddl:-3s"></span>
+          <span class="dust" style="left:74%;top:94%;width:6px;height:6px;--dd:14s;--ddl:-8s"></span>
+          <span class="dust" style="left:88%;top:89%;width:8px;height:8px;--dd:13s;--ddl:-6s"></span>
+          <span class="dust" style="left:44%;top:95%;width:5px;height:5px;--dd:16s;--ddl:-10s"></span>
+          <img class="lyr nebula-sprite" style="left:-6%;top:4%;width:56%;z-index:2" src="assets/undangya/galaksi-jauh/nebula.webp" alt="">
+          <img class="lyr nebula-sprite" style="right:-10%;bottom:2%;width:50%;z-index:2;animation-delay:-12s" src="assets/undangya/galaksi-jauh/nebula.webp" alt="">
+          <img class="lyr asteroid-sprite" style="right:7%;top:9%;width:17%;z-index:3" src="assets/undangya/galaksi-jauh/asteroid.webp" alt="">
+          <img class="lyr floaty" style="left:8%;top:12%;width:20%;z-index:3;animation-delay:-2s" src="assets/undangya/galaksi-jauh/klaster-bintang.webp" alt="">
+          <img class="lyr hang" style="left:5%;top:0;width:14%;z-index:5" src="assets/undangya/galaksi-jauh/planet-ungu.webp" alt="">
+          <img class="lyr hang2" style="right:5%;top:0;width:11%;z-index:5" src="assets/undangya/galaksi-jauh/planet-biru.webp" alt="">
+          <img class="lyr floaty ring-shimmer" style="left:4%;bottom:16%;width:19%;z-index:3" src="assets/undangya/galaksi-jauh/planet-cincin.webp" alt="">
+          <img class="lyr floaty2" style="right:4%;bottom:24%;width:20%;z-index:3" src="assets/undangya/galaksi-jauh/satelit.webp" alt="">
+          <img class="lyr floaty" style="right:14%;top:30%;width:12%;z-index:3;animation-delay:-3s" src="assets/undangya/galaksi-jauh/bulan.webp" alt="">
+          <img class="lyr upright" style="left:2%;bottom:0;width:13%;z-index:5" src="assets/undangya/galaksi-jauh/roket.webp" alt="">
+          <div class="cover-shade"></div>
+        </div>
+        <div class="shutter sh-top" aria-hidden="true"></div>
+        <div class="shutter sh-bot" aria-hidden="true"></div>
+        <div class="viewport-glare" aria-hidden="true"></div>
+      </div>
+    </div>
+    <img class="cover-crest" src="assets/undangya/galaksi-jauh/crest.webp" alt="Emblem orbit emas Galaksi Jauh">
     <div class="cover-ui">
-      <div class="cover-kicker">THE WEDDING OF</div>
+      <div class="cover-kicker">LOG MISI &middot; TRANSMISI UNDANGAN</div>
       <h1 class="cover-names"><span class="nm-line">Meyzsa</span><span class="amp">&amp;</span><span class="nm-line">Fahrezzi</span></h1>
-      <div class="cover-date">SABTU · 12 JUNI 2027</div>
-      <div class="cover-spacer"></div>
-      <div class="cover-guest">Kepada Yth. Bapak/Ibu/Saudara/i</div>
+      <div class="cover-date">SABTU &middot; 12 JUNI 2027</div>
+      <div class="cover-guest" style="margin-top:20px">Kepada Yth. Bapak/Ibu/Saudara/i</div>
       <div class="gname" id="guestName">Tamu Undangan</div>
-      <button id="btnOpen" type="button">✦ BUKA UNDANGAN</button>
+      <button id="btnOpen" type="button">&#10022; MULAI MISI &middot; BUKA UNDANGAN</button>
     </div>
   </header>
 
@@ -312,10 +434,11 @@ body.opened #btnMusic{display:flex}
     <!-- ================= PEMBUKA ================= -->
     <section id="sambutan">
       <img class="sec-decor floaty" style="right:8px;top:14px;width:74px" src="assets/undangya/galaksi-jauh/komet.webp" alt="" loading="lazy" decoding="async">
+      <img class="sec-decor nebula-sprite" style="left:-14px;bottom:10px;width:130px;opacity:.5" src="assets/undangya/galaksi-jauh/nebula.webp" alt="" loading="lazy" decoding="async">
       <div class="bg-tint">
         <div class="sec-head rv rv-drop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/crest.webp" alt="">
-          <div class="sec-kicker">DENGAN MEMOHON RAHMAT ALLAH SWT</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 01 &mdash; DENGAN MEMOHON RAHMAT ALLAH SWT</div>
           <h2 class="sec-title serif">Sebuah Orbit Dimulai</h2>
           <svg class="divider" viewBox="0 0 120 12" aria-hidden="true"><path d="M2 6 H44 M76 6 H118" stroke="#eed9a4" stroke-width="1.4"/><path d="M60 1 L65 6 L60 11 L55 6 Z" fill="none" stroke="#eed9a4" stroke-width="1.4"/><circle cx="49" cy="6" r="1.8" fill="#b79cff"/><circle cx="71" cy="6" r="1.8" fill="#b79cff"/></svg>
         </div>
@@ -333,7 +456,7 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
       <div class="sec-head rv rv-up">
         <img class="sec-icon" src="assets/undangya/galaksi-jauh/planet-cincin.webp" alt="" loading="lazy" decoding="async">
-        <div class="sec-kicker">MEMPELAI</div>
+        <div class="sec-kicker">LOG MISI &middot; ENTIRI 02 &mdash; MEMPELAI</div>
         <h2 class="sec-title serif">Dua Bintang Seorbit</h2>
         <p class="sec-sub">Dua mempelai yang berbahagia</p>
       </div>
@@ -366,17 +489,18 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
         <div class="sec-head rv rv-pop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/icon-rings.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">LOVE STORY</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 03 &mdash; LOVE STORY</div>
           <h2 class="sec-title serif">Peta Perjalanan Kami</h2>
           <p class="sec-sub">Empat koordinat bintang yang membawa kami sampai ke hari ini</p>
         </div>
         <div class="tl">
+          <svg class="orbit-route" viewBox="0 0 60 800" preserveAspectRatio="none" aria-hidden="true"><path d="M10 20 C 55 160, 5 300, 42 430 C 70 540, 8 660, 30 790" fill="none" stroke="#b79cff" stroke-width="1.6" stroke-dasharray="5 7" vector-effect="non-scaling-stroke"/></svg>
           <div class="tl-item rv rv-left">
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-card">
               <img class="tl-thumb" src="assets/undangya/galaksi-jauh/galeri-5.webp" alt="Pasangan di aula observasi saat awal kisah" loading="lazy" decoding="async">
               <div class="tl-year">2019</div>
-              <div class="tl-title">Pertama Bertemu</div>
+              <div class="tl-coord">SEKTOR MELATI &middot; KOORDINAT 2019.07</div><div class="tl-title">Planet Pertemuan &middot; Pertama Bertemu</div>
               <p>Berawal dari pertemuan di sebuah pameran sains dan planetarium — obrolan tentang bintang hari itu menjadi koordinat pertama peta perjalanan kami.</p>
             </div>
           </div>
@@ -385,7 +509,7 @@ body.opened #btnMusic{display:flex}
             <div class="tl-card">
               <img class="tl-thumb" src="assets/undangya/galaksi-jauh/galeri-2.webp" alt="Pasangan berdansa di taman kubah saat lamaran" loading="lazy" decoding="async">
               <div class="tl-year">2023</div>
-              <div class="tl-title">Lamaran &amp; Restu</div>
+              <div class="tl-coord">SEKTOR MELATI &middot; KOORDINAT 2023.11</div><div class="tl-title">Planet Restu &middot; Lamaran &amp; Restu</div>
               <p>Di hadapan keluarga tercinta, Fahrezzi menyampaikan niat sucinya. Dengan restu kedua orang tua, Meyzsa menerimanya — sinyal terindah yang pernah kami terima.</p>
             </div>
           </div>
@@ -394,7 +518,7 @@ body.opened #btnMusic{display:flex}
             <div class="tl-card">
               <img class="tl-thumb" src="assets/undangya/galaksi-jauh/galeri-4.webp" alt="Dua keluarga saling mengenal di balkon planet" loading="lazy" decoding="async">
               <div class="tl-year">2025</div>
-              <div class="tl-title">Menyatukan Dua Keluarga</div>
+              <div class="tl-coord">SEKTOR MELATI &middot; KOORDINAT 2025.05</div><div class="tl-title">Planet Keluarga &middot; Menyatukan Dua Keluarga</div>
               <p>Persiapan demi persiapan kami jalani bersama — dua keluarga saling mengenal, menyatukan cerita dan doa, hingga hari peluncuran terasa kian dekat.</p>
             </div>
           </div>
@@ -403,7 +527,7 @@ body.opened #btnMusic{display:flex}
             <div class="tl-card">
               <img class="tl-thumb" src="assets/undangya/galaksi-jauh/hero.webp" alt="Pasangan di hari bahagia di dek observasi" loading="lazy" decoding="async">
               <div class="tl-year">2027</div>
-              <div class="tl-title">Hari Peluncuran</div>
+              <div class="tl-coord">SEKTOR MELATI &middot; KOORDINAT 2027.06</div><div class="tl-title">Planet Bahagia &middot; Hari Peluncuran</div>
               <p>Sabtu, 12 Juni 2027 — perjalanan seumur hidup kami dimulai. Kami mohon doa restu agar orbit ini diberkahi hingga selamanya.</p>
             </div>
           </div>
@@ -418,10 +542,17 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
         <div class="sec-head rv rv-drop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/icon-clock.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">HITUNG MUNDUR</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 04 &mdash; HITUNG MUNDUR</div>
           <h2 class="sec-title serif">Menuju Hari Peluncuran</h2>
         </div>
-        <div class="countdown rv rv-zoom" id="countdown" data-target="2027-06-12T08:00:00+07:00" aria-label="Hitung mundur menuju akad nikah">
+<div class="orbit-dial rv rv-zoom" aria-hidden="true">
+          <div class="dial-face"></div>
+          <span class="dial-tick"></span><span class="dial-tick" style="transform:rotate(90deg)"></span><span class="dial-tick" style="transform:rotate(180deg)"></span><span class="dial-tick" style="transform:rotate(270deg)"></span>
+          <div class="dial-orbit"><span class="dial-planet"></span></div>
+          <div class="dial-orbit o2"><span class="dial-planet p2"></span></div>
+          <div class="dial-core"><b>12&middot;06</b><span>HARI PELUNCURAN &middot; 2027</span></div>
+        </div>
+                <div class="countdown rv rv-zoom" id="countdown" data-target="2027-06-12T08:00:00+07:00" aria-label="Hitung mundur menuju akad nikah">
           <div class="cd-box"><b id="cdD">0</b><span>Hari</span></div>
           <div class="cd-box"><b id="cdH">0</b><span>Jam</span></div>
           <div class="cd-box"><b id="cdM">0</b><span>Menit</span></div>
@@ -477,25 +608,25 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
       <div class="sec-head rv rv-up">
         <img class="sec-icon" src="assets/undangya/galaksi-jauh/planet-ungu.webp" alt="" loading="lazy" decoding="async">
-        <div class="sec-kicker">GALERI</div>
-        <h2 class="sec-title serif">Jendela-Jendela Stasiun</h2>
-        <p class="sec-sub">Delapan potret dari perjalanan antar bintang kami — ketuk untuk memperbesar</p>
+        <div class="sec-kicker">LOG MISI &middot; ENTIRI 05 &mdash; GALERI &middot; TRANSMISI FOTO</div>
+        <h2 class="sec-title serif">Transmisi dari Teleskop</h2>
+        <p class="sec-sub">Delapan transmisi foto dari teleskop stasiun — ketuk untuk memperbesar</p>
       </div>
       <div class="gal-hint">— GESER KANAN · KIRI —</div>
-      <div class="rail-label">POTRET PILIHAN · BERFRAME PORTAL</div>
+      <div class="rail-label">TRANSMISI UTAMA · BINGKAI VIEWPORT MINI</div>
       <div class="gal-rail" id="railMain">
-        <div class="gal-slide rv rv-up"><span class="gal-num">01 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-1.webp" alt="Pasangan berjalan di dek observasi dengan planet bercincin" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Dek Observasi</figcaption></figure></div>
-        <div class="gal-slide rv rv-up" style="--d:.08s"><span class="gal-num">02 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-2.webp" alt="Pasangan berdansa di taman kubah antariksa" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Taman Kubah</figcaption></figure></div>
-        <div class="gal-slide rv rv-up" style="--d:.16s"><span class="gal-num">04 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-4.webp" alt="Pasangan di balkon planet dengan bulan sabit dan komet" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Balkon Planet</figcaption></figure></div>
-        <div class="gal-slide rv rv-up" style="--d:.24s"><span class="gal-num">07 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-7.webp" alt="Pasangan di bawah hujan bintang jatuh" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Hujan Bintang Jatuh</figcaption></figure></div>
+        <div class="gal-slide rv rv-up"><span class="gal-num">01 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-1.webp" alt="Pasangan berjalan di dek observasi dengan planet bercincin" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 01</span><figcaption class="gal-cap">Transmisi 01 &middot; SEKTOR MELATI &middot; 12.06 &mdash; Dek Observasi</figcaption></figure></div>
+        <div class="gal-slide rv rv-up" style="--d:.08s"><span class="gal-num">02 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-2.webp" alt="Pasangan berdansa di taman kubah antariksa" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 02</span><figcaption class="gal-cap">Transmisi 02 &middot; SEKTOR MELATI &middot; 12.06 &mdash; Taman Kubah</figcaption></figure></div>
+        <div class="gal-slide rv rv-up" style="--d:.16s"><span class="gal-num">04 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-4.webp" alt="Pasangan di balkon planet dengan bulan sabit dan komet" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 04</span><figcaption class="gal-cap">Transmisi 04 &middot; SEKTOR BINTANG &middot; 12.06 &mdash; Balkon Planet</figcaption></figure></div>
+        <div class="gal-slide rv rv-up" style="--d:.24s"><span class="gal-num">07 / 08</span><figure><div class="portal ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-7.webp" alt="Pasangan di bawah hujan bintang jatuh" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 07</span><figcaption class="gal-cap">Transmisi 07 &middot; SEKTOR KOMET &middot; 12.06 &mdash; Hujan Bintang Jatuh</figcaption></figure></div>
       </div>
       <div class="rail-meta"><span class="rail-frac" id="fracMain">1 / 4</span><span class="rail-dots" id="dotsMain"></span></div>
-      <div class="rail-label">POTRET LEPAS · TANPA FRAME</div>
+      <div class="rail-label">TRANSMISI LEPAS · FOTO PENUH</div>
       <div class="gal-rail" id="railSub">
-        <div class="gal-slide small rv rv-up"><span class="gal-num">03 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-3.webp" alt="Pasangan di koridor bintang dengan jendela bundar" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Koridor Bintang</figcaption></figure></div>
-        <div class="gal-slide small rv rv-up" style="--d:.08s"><span class="gal-num">05 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-5.webp" alt="Pasangan duduk di aula observasi bergalaksi spiral" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Aula Galaksi</figcaption></figure></div>
-        <div class="gal-slide small rv rv-up" style="--d:.16s"><span class="gal-num">06 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-6.webp" alt="Pasangan di samping roket mini generik di hanggar stasiun" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Hanggar Roket Mini</figcaption></figure></div>
-        <div class="gal-slide small rv rv-up" style="--d:.24s"><span class="gal-num">08 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-8.webp" alt="Pasangan di tepi danau kosmik dengan bumi di kejauhan" loading="lazy" decoding="async"></div><figcaption class="gal-cap">Danau Kosmik</figcaption></figure></div>
+        <div class="gal-slide small rv rv-up"><span class="gal-num">03 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-3.webp" alt="Pasangan di koridor bintang dengan jendela bundar" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 03</span><figcaption class="gal-cap">Transmisi 03 &middot; SEKTOR MELATI &middot; 12.06 &mdash; Koridor Bintang</figcaption></figure></div>
+        <div class="gal-slide small rv rv-up" style="--d:.08s"><span class="gal-num">05 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-5.webp" alt="Pasangan duduk di aula observasi bergalaksi spiral" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 05</span><figcaption class="gal-cap">Transmisi 05 &middot; SEKTOR SPIRAL &middot; 12.06 &mdash; Aula Galaksi</figcaption></figure></div>
+        <div class="gal-slide small rv rv-up" style="--d:.16s"><span class="gal-num">06 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-6.webp" alt="Pasangan di samping roket mini generik di hanggar stasiun" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 06</span><figcaption class="gal-cap">Transmisi 06 &middot; SEKTOR DOK &middot; 12.06 &mdash; Hanggar Roket Mini</figcaption></figure></div>
+        <div class="gal-slide small rv rv-up" style="--d:.24s"><span class="gal-num">08 / 08</span><figure><div class="plain ph"><img class="gal-photo" src="assets/undangya/galaksi-jauh/galeri-8.webp" alt="Pasangan di tepi danau kosmik dengan bumi di kejauhan" loading="lazy" decoding="async"></div><span class="tx-tag">RX &middot; TELESKOP 08</span><figcaption class="gal-cap">Transmisi 08 &middot; SEKTOR BUMI &middot; 12.06 &mdash; Danau Kosmik</figcaption></figure></div>
       </div>
       <div class="rail-meta"><span class="rail-frac" id="fracSub">1 / 4</span><span class="rail-dots" id="dotsSub"></span></div>
       </div>
@@ -507,7 +638,7 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
         <div class="sec-head rv rv-pop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/komet.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">CUPLIKAN</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 06 &mdash; CUPLIKAN</div>
           <h2 class="sec-title serif">Cuplikan dari Orbit</h2>
           <p class="sec-sub">Sepotong perjalanan kami dalam bingkai bergerak</p>
         </div>
@@ -525,11 +656,11 @@ body.opened #btnMusic{display:flex}
 
     <!-- ================= LIVE STREAMING + TAGAR + GALERI TAMU ================= -->
     <section id="live">
-      <img class="sec-decor floaty" style="right:8px;top:16px;width:80px" src="assets/undangya/galaksi-jauh/satelit.webp" alt="" loading="lazy" decoding="async">
+      <img class="sec-decor asteroid-sprite" style="right:8px;top:16px;width:80px" src="assets/undangya/galaksi-jauh/asteroid.webp" alt="" loading="lazy" decoding="async">
       <div class="bg-tint">
         <div class="sec-head rv rv-drop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/bintang-jatuh.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">LIVE STREAMING</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 07 &mdash; LIVE STREAMING</div>
           <h2 class="sec-title serif">Siaran dari Stasiun</h2>
           <p class="sec-sub">Untuk keluarga &amp; sahabat yang berhalangan hadir langsung</p>
         </div>
@@ -545,7 +676,7 @@ body.opened #btnMusic{display:flex}
           <button class="salin-btn" type="button" data-copytext="#MeyzsaFahrezzi">SALIN TAGAR</button>
         </div>
         <div class="card rv rv-flip" style="text-align:center;margin-top:16px">
-          <div class="sec-kicker">GALERI TAMU</div>
+          <div class="sec-kicker">ARSIP MISI &mdash; GALERI TAMU</div>
           <h3 class="sub-h">Galeri Tamu</h3>
           <p style="font-size:13px;line-height:1.7">Bagikan momen bahagia Anda selama acara — unggah foto Anda di sini dan tandai juga dengan tagar <b>#MeyzsaFahrezzi</b>.</p>
           <label class="salin-btn gt-up" for="gtInput">＋ UNGGAH FOTO</label>
@@ -559,11 +690,11 @@ body.opened #btnMusic{display:flex}
 
     <!-- ================= RSVP ================= -->
     <section id="rsvp">
-      <img class="sec-decor floaty2" style="left:8px;top:16px;width:74px" src="assets/undangya/galaksi-jauh/rasi.webp" alt="" loading="lazy" decoding="async">
+      <img class="sec-decor floaty2" style="left:8px;top:16px;width:74px" src="assets/undangya/galaksi-jauh/klaster-bintang.webp" alt="" loading="lazy" decoding="async">
       <div class="bg-tint">
         <div class="sec-head rv rv-up">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/icon-rings.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">RSVP &amp; UCAPAN</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 08 &mdash; RSVP &amp; UCAPAN</div>
           <h2 class="sec-title serif">Dinding Ucapan Antariksa</h2>
           <p class="sec-sub">Konfirmasi kehadiran &amp; kirimkan sinyal doa terbaik Anda</p>
         </div>
@@ -587,7 +718,7 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
         <div class="sec-head rv rv-pop">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/icon-scroll.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">BUKU TAMU &amp; CHECK-IN</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 09 &mdash; BUKU TAMU &amp; CHECK-IN</div>
           <h2 class="sec-title serif">Pos Check-In Stasiun</h2>
           <p class="sec-sub">Pindai kode QR ini atau isi buku tamu saat tiba di lokasi</p>
         </div>
@@ -612,7 +743,7 @@ body.opened #btnMusic{display:flex}
       <div class="bg-tint">
       <div class="sec-head rv rv-drop">
         <img class="sec-icon" src="assets/undangya/galaksi-jauh/crest.webp" alt="" loading="lazy" decoding="async">
-        <div class="sec-kicker">AMPLOP DIGITAL</div>
+        <div class="sec-kicker">LOG MISI &middot; ENTIRI 10 &mdash; AMPLOP DIGITAL</div>
         <h2 class="sec-title serif">Tanda Kasih</h2>
         <p class="sec-sub">Doa restu Anda adalah hadiah terindah. Bagi yang berkenan memberi tanda kasih:</p>
       </div>
@@ -639,11 +770,11 @@ body.opened #btnMusic{display:flex}
 
     <!-- ================= TURUT MENGUNDANG ================= -->
     <section id="turut">
-      <img class="sec-decor floaty2" style="right:8px;top:16px;width:64px" src="assets/undangya/galaksi-jauh/bulan.webp" alt="" loading="lazy" decoding="async">
+      <img class="sec-decor floaty2" style="right:8px;top:16px;width:52px" src="assets/undangya/galaksi-jauh/bintang.webp" alt="" loading="lazy" decoding="async">
       <div class="bg-tint">
         <div class="sec-head rv rv-up">
           <img class="sec-icon" src="assets/undangya/galaksi-jauh/rasi.webp" alt="" loading="lazy" decoding="async">
-          <div class="sec-kicker">TURUT MENGUNDANG</div>
+          <div class="sec-kicker">LOG MISI &middot; ENTIRI 11 &mdash; TURUT MENGUNDANG</div>
           <h2 class="sec-title serif">Turut Mengundang</h2>
           <p class="sec-sub">Segenap keluarga besar kedua mempelai</p>
         </div>
